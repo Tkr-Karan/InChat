@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import {getPosts} from '../api';
-import { Home } from '../pages/index';
+import Home from '../pages/home';
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Karan Kumar!!</h1>
+      {/* <h1>Karan Kumar!!</h1> */}
 
       <Home />
     </div>

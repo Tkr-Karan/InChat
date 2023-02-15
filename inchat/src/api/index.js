@@ -1,4 +1,4 @@
-import { API_URLS, LOCALSTORAGE_TOKEN_KEY } from "../utils";
+import { API_URLS, LOCALSTORAGE_TOKEN_KEY } from "../utils/index";
 
 
 const customFetch = async (url, { body, ...customConfig}) => {
