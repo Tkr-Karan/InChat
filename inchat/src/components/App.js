@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import {getPosts} from '../api';
+import { Home } from '../pages/index';
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
   return (
     <div className="App">
       <h1>Karan Kumar!!</h1>
+
+      <Home />
     </div>
   );
 }
