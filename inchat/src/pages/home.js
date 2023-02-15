@@ -1,3 +1,4 @@
+
 const Home = () =>{
     return(
         <div className="post-list">
@@ -28,5 +29,6 @@ const Home = () =>{
     )
 
 };
+
 
 export default Home;
