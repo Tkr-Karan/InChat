@@ -7,7 +7,7 @@ const Home = () =>{
                     <div className="post-avatar">
                         <img src="https://cdn-icons.flaticon.com/svg/3917/3917711.svg?token=exp=1676488238~hmac=ba91e3b640af3da412a62338f164c78c" alt="user-profile-pic"></img>
 
-                        <div>
+                        <div className="author-details">
                             <span className="post-author">Karan kr</span>
                             <span className="post-time"> a minute ago</span>
                         </div>
