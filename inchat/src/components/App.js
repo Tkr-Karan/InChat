@@ -30,7 +30,7 @@ function App() {
 
     fetchPosts();
 
-  }, [])
+  }, []) 
 
   if(loading){
      return <Loader />
