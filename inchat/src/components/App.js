@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {getPosts} from '../api';
 import Home from '../pages/home';
 import Loader from "./loader";
+import Navbar from "./Navbar";
 import styles from '../styles/index.css';
 
 
@@ -28,6 +29,9 @@ function App() {
     };
  
 
+
+
+
     fetchPosts();
 
   }, [])   
@@ -37,7 +41,9 @@ function App() {
   }
 
   return (
+    
     <div className="App">
+      <Navbar />
       {/* <h1>Karan Kumar!!</h1> */}
 
       <Home posts={posts} />
