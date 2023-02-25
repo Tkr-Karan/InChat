@@ -1,3 +1,5 @@
+import Comment from '../components/Comment';
+
 import styles from '../styles/home.module.css';
 
 const Home = () =>{
@@ -35,15 +37,8 @@ const Home = () =>{
                     </div>
 
                     <div className={styles.postCommentsList}>
-                        <div className={styles.postCommentItem}>
-                            <div className={styles.postCommentHeader}>
-                                <span className={styles.postCommentAuthor}>Karan</span>
-                                <span className={styles.postCommentTime}>a minute ago</span>
-                                <span className={styles.postCommentLikes}>23</span>
-                            </div>
+                        <Comment />
 
-                            <div className={styles.postCommentContent}>Random comment</div>
-                        </div>
                     </div>
                 </div>
             </div>
