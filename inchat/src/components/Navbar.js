@@ -11,7 +11,7 @@ const Navbar = () => {
           />
         </a>
       </div>
-
+ 
       <div className={styles.rightNav}>
         <div className={styles.user}>
           <a href="/">
