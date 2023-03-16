@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import {getPosts} from '../api';
-import Home from '../pages/home';
+import Home from '../pages/Home';
+import Login from "../pages/Login";
 import Loader from "./loader";
 import Navbar from "./Navbar";
 import styles from '../styles/index.css';
 
+const About = () => {
+  return <h1> About </h1>;
+}
 
+const UserInfo = () => {
+  return <h1> User </h1>;
+}
 
 function App() {
 
