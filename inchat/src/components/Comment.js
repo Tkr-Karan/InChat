@@ -3,6 +3,7 @@ import styles from '../styles/home.module.css';
 const Comment = () => {
 
     return(
+        // <div> Comments</div>
         <div className={styles.postCommentItem}>
             <div className={styles.postCommentHeader}>
                 <span className={styles.postCommentAuthor}>Karan</span>
@@ -10,7 +11,8 @@ const Comment = () => {
                 <span className={styles.postCommentLikes}>23</span>
             </div>
 
-            <div className={styles.postCommentContent}>Random comment</div>
+            <div className={styles.postCommentContent}>     Random       comment
+            </div>
         </div>
     )
 }

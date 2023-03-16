@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import {getPosts} from '../api';
 import Home from '../pages/Home';
 import Login from "../pages/Login";
-import Loader from "./loader";
+import Loader from "./Loader";
 import Navbar from "./Navbar";
 import styles from '../styles/index.css';
 
@@ -53,11 +53,8 @@ function App() {
     
     <div className="App">
       <Navbar />
-      {/* <h1>Karan Kumar!!</h1> */}
+      <Home posts={posts}/>
 
-      <Home posts={posts} />
-      <Home />
-      <Home />
     </div>
   );
 }

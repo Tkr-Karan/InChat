@@ -2,22 +2,24 @@ import Comment from '../components/Comment';
 
 import styles from '../styles/home.module.css';
 
-const Home = () =>{
+const Home = ({posts}) =>{
+
     return(
-        <div className="post-list">
-            <div className={styles.postWrapper}>
+        <div className={styles.postsList}>
+            {posts.map((post) =>(
+                <div className={styles.postWrapper}>
                 <div className={styles.postHeader}>
                     <div className={styles.postAvatar}>
                         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="user-profile-pic"></img>
 
                         <div className={styles.postAuthor}>
-                            <span className={styles.postAuthor}>Karan kr</span>
+                            <span className={styles.postAuthor}>{post.user.name}</span>
                             <span className={styles.postTime}> a minute ago</span>
                         </div>
                     </div>
 
                     <div className={styles.postContent}>
-                        Post Content
+                        {post.content}
                     </div>
 
                     <div className={styles.postActions}>
@@ -38,10 +40,10 @@ const Home = () =>{
 
                     <div className={styles.postCommentsList}>
                         <Comment />
-
                     </div>
                 </div>
             </div>
+            ))}
         </div>
     )
 
