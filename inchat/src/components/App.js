@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter,  Route, Routes } from "react-router-dom";
 
 import {getPosts} from '../api';
 import Home from '../pages/Home';
@@ -52,8 +52,15 @@ function App() {
   return (
     
     <div className="App">
-      <Navbar />
-      <Home posts={posts}/>
+      <BrowserRouter>
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<Home posts={posts}/>}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+        </Routes>
+      </BrowserRouter>
 
     </div>
   );

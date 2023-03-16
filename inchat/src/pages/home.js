@@ -8,7 +8,7 @@ const Home = ({posts}) =>{
     return(
         <div className={styles.postsList}>
             {posts.map((post) =>(
-                <div className={styles.postWrapper}>
+                <div className={styles.postWrapper} key={`post-${post._id}`} >
                 <div className={styles.postHeader}>
                     <div className={styles.postAvatar}>
                         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="user-profile-pic"></img>

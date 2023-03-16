@@ -11,8 +11,7 @@ const Comment = () => {
                 <span className={styles.postCommentLikes}>23</span>
             </div>
 
-            <div className={styles.postCommentContent}>     Random       comment
-            </div>
+            <div className={styles.postCommentContent}>Random comment</div>
         </div>
     )
 }
