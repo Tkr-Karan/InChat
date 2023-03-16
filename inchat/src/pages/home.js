@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Comment from '../components/Comment';
 
 import styles from '../styles/home.module.css';
@@ -47,6 +48,12 @@ const Home = ({posts}) =>{
         </div>
     )
 
+};
+
+// declaring the tell that which props property we are that passes as props
+// we mentioned the proptypes in an object
+Home.propTypes = {
+    posts: PropTypes.array.isRequired,
 };
 
 
