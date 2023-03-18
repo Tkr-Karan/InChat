@@ -7,6 +7,7 @@ import Home from '../pages/Home';
 import Login from "../pages/Login";
 import Loader from "./Loader";
 import Navbar from "./Navbar";
+import { ToastContainer } from "react-toastify";
 import styles from '../styles/index.css';
 
 
