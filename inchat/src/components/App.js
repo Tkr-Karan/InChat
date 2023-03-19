@@ -42,7 +42,7 @@ function App() {
 
 
       setLoading(false);
-      console.log('response', response);
+      // console.log('response', response);
     };
  
 

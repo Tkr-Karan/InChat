@@ -2,14 +2,22 @@ import { useState } from 'react';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/login.module.css';
+import {useAuth} from '../hooks';
 
 import{login} from '../api';
+// import { toast } from 'react-toastify/dist/components';
+
+const clicked = () => {
+    toast("clicked hain bhai");
+}
 
 const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loggingIn, setLoggingIn] = useState(false);
+    const auth = useAuth();
+    console.log(auth);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,14 +31,14 @@ const Login = () => {
             });
         }
 
-        const response = await login(email, password);
+        const response = await auth.login(email, password);
 
         if(response.success) {
             toast("succeessFully logged in",{
                 appearance: 'success',
         });
         }else{
-            return toast(response.message, {
+            toast.warn(response.message, {
                 appearance: 'error',
             });
         }
@@ -63,7 +71,10 @@ const Login = () => {
             <div className={styles.field} disabled={loggingIn}>
                 <button disabled={loggingIn}>
                     {loggingIn ? 'logging In.....' : 'Log In'}
-                    <ToastContainer />
+                        
+                    <ToastContainer
+                        autoClose={1000}
+                    />
                 </button>
             </div>
         </form>
