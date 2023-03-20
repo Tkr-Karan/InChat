@@ -26,34 +26,24 @@ const Page404 = () => {
 
 function App() {
 
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
 
+  //this hook set in the Home.js
+  // const [posts, setPosts] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     const response = await getPosts();
+  //     if( response.success){
+  //       setPosts(response.data.posts);
+  //     }
+  //     setLoading(false);
+  //     // console.log('response', response);
+  //   };
+  //   fetchPosts();
 
+  // }, [])   
 
-  useEffect(() => {
-
-    const fetchPosts = async () => {
-      const response = await getPosts();
-
-      if( response.success){
-        setPosts(response.data.posts);
-      }
-
-
-      setLoading(false);
-      // console.log('response', response);
-    };
- 
-
-
-
-
-    fetchPosts();
-
-  }, [])   
-
-  if(loading){
+  if(auth.loading){
      return <Loader />
   }
 

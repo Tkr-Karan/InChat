@@ -28,7 +28,7 @@ export const removeItemLocalStorage = ( key) => {
         return  console.error("cannot store value in LS");
     }
 
-    localStorage.removeItem(key);
+    return localStorage.removeItem(key);
 };
 
 export const getFormBody = (params) => {
