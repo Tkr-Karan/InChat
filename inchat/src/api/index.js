@@ -71,9 +71,19 @@ export const getPosts = (page = 1  , limit = 5) => {
     });
 };
 
+
+// create Login Function
 export const login = (email, password) => {
     return customFetch(API_URLS.login(),{
         method: "POST",
         body: {email, password}
+    });
+}
+
+// create Register function
+export const register = async(name, email, password, confirmPassword) => {
+    return customFetch(API_URLS.signup(),{
+        method: "POST",
+        body: {email, name, password, confirm_password: confirmPassword}
     });
 }

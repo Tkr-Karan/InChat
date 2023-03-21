@@ -10,6 +10,7 @@ import Navbar from "./Navbar";
 import { ToastContainer } from "react-toastify";
 import styles from '../styles/index.css';
 import { useAuth } from "../hooks";
+import Register from "../pages/Register";
 
 // creating Components
 const About = () => {
@@ -57,9 +58,9 @@ function App() {
       
             {/* <Route exact path="/" element={<Home posts={posts}/>}></Route> */}
             <Route exact path="/" element={<Home />}></Route>
-
             <Route exact path="/about" element={<About />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
+            <Route exact path="/sign-up" element={<Register />}></Route>
             <Route path="*" element={<Page404 />}></Route>
             
         </Routes>

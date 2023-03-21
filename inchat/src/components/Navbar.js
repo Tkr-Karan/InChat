@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useAuth } from '../hooks';
 import styles from '../styles/navbar.module.css';
 
 
 const Navbar = () => {
+  // adding auth so we can display the user if it successfully authenticatte
+  const auth = useAuth();
   return (
     <div className={styles.nav}>
       <div className={styles.leftDiv}>
@@ -15,7 +18,8 @@ const Navbar = () => {
       </div>
  
       <div className={styles.rightNav}>
-        <div className={styles.user}>
+        {/* checking is the user exist or not */}
+        { auth.user && ( <div className={styles.user}>
           <a href="/">
             <img
               src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
@@ -23,21 +27,30 @@ const Navbar = () => {
               className={styles.userDp}
             />
           </a>
-          <span>Karan</span>
-        </div>
-
+          <span>{auth.user.name}</span>
+        </div> 
+        )}
         <div className={styles.navLinks}>
           <ul>
-            <li>
-              <Link to='/login'> Login </Link>
-              {/* <a href="/">Log in</a> */}
-            </li>
-            <li>
-              <a href="/">Log out</a>
-            </li>
-            <li>
-              <a href="/">Register</a>
-            </li>
+            {/* putting the conditon if the user is exit then show Logout otherwise show Login as well as Register */}
+          {auth.user ? (
+            <>
+              <li onClick={auth.logout}>
+                LogOut 
+                {/* <a href="/">Log in</a> */}
+              </li>
+            </>
+          ): (
+            <>
+              <li>
+                <Link to="/login">Log In</Link>
+              </li>
+              <li>
+                <Link to="/sign-up">Register</Link>
+              </li>
+            </>
+          )}
+            
           </ul>
         </div>
       </div>
