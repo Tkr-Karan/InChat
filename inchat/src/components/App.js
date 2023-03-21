@@ -9,7 +9,7 @@ import Loader from "./Loader";
 import Navbar from "./Navbar";
 import { ToastContainer } from "react-toastify";
 import styles from '../styles/index.css';
-
+import { useAuth } from "../hooks";
 
 // creating Components
 const About = () => {
@@ -25,7 +25,7 @@ const Page404 = () => {
 }
 
 function App() {
-
+  const auth = useAuth();
 
   //this hook set in the Home.js
   // const [posts, setPosts] = useState([]);
@@ -55,7 +55,9 @@ function App() {
 
         <Routes>
       
-            <Route exact path="/" element={<Home posts={posts}/>}></Route>
+            {/* <Route exact path="/" element={<Home posts={posts}/>}></Route> */}
+            <Route exact path="/" element={<Home />}></Route>
+
             <Route exact path="/about" element={<About />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route path="*" element={<Page404 />}></Route>

@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import Comment from '../components/Comment';
-
+import Loader from '../components/Loader';
+import { useEffect, useState } from 'react';
+import { getPosts } from '../api';
 import styles from '../styles/home.module.css';
 
 const Home = () =>{
@@ -18,6 +20,7 @@ const Home = () =>{
         setLoading(false);
         // console.log('response', response);
         };
+        
         fetchPosts();
 
     }, [])   
