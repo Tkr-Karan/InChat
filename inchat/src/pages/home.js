@@ -77,9 +77,9 @@ const Home = () =>{
 
 // declaring the tell that which props property we are that passes as props
 // we mentioned the proptypes in an object
-Home.propTypes = {
-    posts: PropTypes.array.isRequired,
-};
+// Home.propTypes = {
+//     posts: PropTypes.array.isRequired,
+// };
 
 
 export default Home;

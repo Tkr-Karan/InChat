@@ -65,7 +65,7 @@ export const useProviderAuth = () => {
             success: false,
             message: response.message,
         };
-      }
+    }
 
   }
 
