@@ -41,7 +41,7 @@ const Register = () => {
         }
 
         // Setting up the Sign Up Response
-        const response = await auth.register(name, email, password, confirmPassword);
+        const response = await auth.signup(name, email, password, confirmPassword);
 
         if(response.success){
             history('/login');

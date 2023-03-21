@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter,  Route, Routes } from "react-router-dom";
 
 
-import {getPosts} from '../api';
+// import {getPosts} from '../api';
 import Home from '../pages/Home';
 import Login from "../pages/Login";
 import Loader from "./Loader";

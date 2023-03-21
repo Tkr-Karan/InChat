@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { login as userLogin } from '../api';
+import { login as userLogin, register } from '../api';
 import jwt from 'jwt-decode';
 import { setItemLocalStorage, LOCALSTORAGE_TOKEN_KEY, removeItemLocalStorage, getItemLocalStorage } from '../utils';
 
@@ -51,6 +51,25 @@ export const useProviderAuth = () => {
   };
 
 
+  //creating SignUp/register function
+  const signup = async (name, email, password, confirmPassword) => {
+    const response = await register(name, email, password, confirmPassword);
+
+    if(response.success) {
+        return {
+          success: true,
+      };
+    } 
+    else{
+        return{
+            success: false,
+            message: response.message,
+        };
+      }
+
+  }
+
+
   const logout = () => {
     setuser(null);
     removeItemLocalStorage(LOCALSTORAGE_TOKEN_KEY);
@@ -60,7 +79,8 @@ export const useProviderAuth = () => {
     user,
     login, 
     logout, 
-    loading
+    loading,
+    signup
   }
 
 };

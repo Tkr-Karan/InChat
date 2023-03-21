@@ -8,6 +8,7 @@ const initialState = {
     //creating some function
     login: () => {},
     logout: () => {},
+    signup: () => {},
     // creating loading state
     loading: true,
 }   
