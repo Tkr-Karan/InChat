@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import styles from '../styles/index.css';
 import { useAuth } from "../hooks";
 import Register from "../pages/Register";
+import Setting from "../pages/Setting";
 
 // creating Components
 const About = () => {
@@ -61,6 +62,7 @@ function App() {
             <Route exact path="/about" element={<About />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/sign-up" element={<Register />}></Route>
+            <Route exact path="/user-settings" element={<Setting />}></Route>
             <Route path="*" element={<Page404 />}></Route>
             
         </Routes>

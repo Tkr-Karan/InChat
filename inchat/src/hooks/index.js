@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { login as userLogin, register } from '../api';
+import { editProfile, login as userLogin, register } from '../api';
 import jwt from 'jwt-decode';
 import { setItemLocalStorage, LOCALSTORAGE_TOKEN_KEY, removeItemLocalStorage, getItemLocalStorage } from '../utils';
 
@@ -67,6 +67,28 @@ export const useProviderAuth = () => {
         };
     }
 
+  }
+
+  const updateUser = async(userId, name, password, confirmPassword) => {
+    const response = await editProfile(userId, name, password, confirmPassword);
+    // checking the response and handling each authentication
+    if(response.success){
+        // if the response is success we setup the user using particular hook
+        // setuser(response.data.user);
+        // setItemLocalStorage(
+        //   LOCALSTORAGE_TOKEN_KEY,
+        //   response.data.token ? response.data.token : null
+        //   );
+        return {
+            success: true,
+        };
+    }
+    else{
+        return{
+            success: false,
+            message: response.message,
+        };
+    }
   }
 
 
