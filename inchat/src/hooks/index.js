@@ -102,7 +102,8 @@ export const useProviderAuth = () => {
     login, 
     logout, 
     loading,
-    signup
+    signup,
+    updateUser
   }
 
 };

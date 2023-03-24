@@ -1,6 +1,8 @@
 import styles from '../styles/settings.module.css';
 import { useAuth } from '../hooks';
 import { useState } from 'react';
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Settings = () => {
   const auth = useAuth();
@@ -8,14 +10,62 @@ const Settings = () => {
   
   const [editMode, setEditMode] =  useState(false);
   const [name, setName] =  useState(auth.user?.name ? auth.user.name : '');
-  const [passwrod, setPassword] =  useState('');
+  const [password, setPassword] =  useState('');
   const [confirmPassword, setConfirmPassword] =  useState('');
   const [savingForm, setSavingForm] =  useState(false);
 
 
+  // setting up the clear function
+  const clearForm = () => {
+    setPassword('');
+    setConfirmPassword('');
+  }
+
 
   // adding update profile function
-  const updateProfile = () => {
+  const updateProfile = async () => {
+    setSavingForm(true);
+
+    let error = false
+    if(!name || ! password || !confirmPassword){
+      toast("please fill the fields", {
+        apperance: 'error'
+      });
+
+      error = true;
+
+    }
+
+    if(password !== confirmPassword) {
+      toast("password and confirm password doesn't match", {
+        apperance: 'error'
+      });
+
+      error = true;
+    }
+
+    if(error){
+      return setSavingForm(false);
+    }
+
+    const response =await auth.updateUser(auth.user._id, name, password, confirmPassword);
+
+    if(response.success){
+      setEditMode(false);
+      setSavingForm(false);
+      clearForm();
+
+      return toast("User update successfully", {
+        apperance: 'success'
+      });
+    }else{
+      toast(response.message,{
+        apperance: 'error',
+      })
+    }
+
+
+    setSavingForm(false);
 
   }
 
@@ -52,7 +102,7 @@ const Settings = () => {
           <div className={styles.fieldLabel}>Password</div>
           <input 
             type="password" 
-            value={passwrod}
+            value={password}
             onChange = { (e) => setPassword(e.target.value)}
           />
         </div>
@@ -75,8 +125,11 @@ const Settings = () => {
           <>
             <button className={`button ${styles.saveBtn}`} onClick={updateProfile}>
               {savingForm ? 'saving profile...' : 'save profile'}
+              <ToastContainer />
             </button>
-            <button className={`button ${styles.editBtn}`} onClick={() => setEditMode(false)}>Go back</button>
+            <button className={`button ${styles.editBtn}`} onClick={() => setEditMode(false)}>Go back
+            
+            </button>
 
           </>
         ) : (
