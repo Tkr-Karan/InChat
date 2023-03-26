@@ -74,7 +74,7 @@ const Settings = () => {
       <div className={styles.imgContainer}>
         <img
           src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
-          alt="user image"
+          alt="user"
         />
       </div>
 

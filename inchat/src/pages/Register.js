@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../hooks';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useNavigate} from 'react-router-dom';
+import {Navigate, useNavigate} from 'react-router-dom';
 
 const Register = () => {
     
@@ -60,6 +60,11 @@ const Register = () => {
 
         setSignUp(false);
     };
+
+
+    if(auth.user){
+        return <Navigate to= '/' />
+    }
 
     return (
         <form className={styles.loginForm} onSubmit={handleFormSubmit}>

@@ -17,9 +17,11 @@ export const useProviderAuth = () => {
   useEffect(() => {
     const userToken = getItemLocalStorage(LOCALSTORAGE_TOKEN_KEY);
 
+    console.log(userToken);
+
     if(userToken){
       const user = jwt(userToken);
-
+      console.log(user);
       setuser(user);
     }
 
@@ -74,11 +76,11 @@ export const useProviderAuth = () => {
     // checking the response and handling each authentication
     if(response.success){
         // if the response is success we setup the user using particular hook
-        // setuser(response.data.user);
-        // setItemLocalStorage(
-        //   LOCALSTORAGE_TOKEN_KEY,
-        //   response.data.token ? response.data.token : null
-        //   );
+        setuser(response.data.user);
+        setItemLocalStorage(
+          LOCALSTORAGE_TOKEN_KEY,
+          response.data.token ? response.data.token : null
+          );
         return {
             success: true,
         };

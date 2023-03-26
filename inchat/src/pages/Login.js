@@ -5,6 +5,7 @@ import styles from '../styles/login.module.css';
 import {useAuth} from '../hooks';
 
 import{login} from '../api';
+import { Navigate } from 'react-router';
 // import { toast } from 'react-toastify/dist/components';
 
 const clicked = () => {
@@ -45,6 +46,10 @@ const Login = () => {
 
         setLoggingIn(false);
     };
+
+    if(auth.user) {
+        return <Navigate to= '/' />
+    }
 
     return (
         <form className={styles.loginForm} onSubmit={handleSubmit}>

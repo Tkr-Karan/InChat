@@ -15,11 +15,11 @@ export const setItemLocalStorage = ( key, value) => {
 };
 
 // get value function
-export const getItemLocalStorage = ( key) => {
+export const getItemLocalStorage = (key) => {
     if(!key){
         return  console.error("cannot get the value in LS");
     }
-    localStorage.getItem(key);
+    return localStorage.getItem(key);
 };
 
 // remove function
