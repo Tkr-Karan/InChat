@@ -77,9 +77,7 @@ const Login = () => {
                 <button disabled={loggingIn}>
                     {loggingIn ? 'logging In.....' : 'Log In'}
                         
-                    <ToastContainer
-                        autoClose={1000}
-                    />
+                    <ToastContainer />  
                 </button>
             </div>
         </form>

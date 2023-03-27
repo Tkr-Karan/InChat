@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter,  Route, Routes } from "react-router-dom";
+import { BrowserRouter,  Navigate,  Route, Routes } from "react-router-dom";
 
 
 // import {getPosts} from '../api';
@@ -12,6 +12,20 @@ import styles from '../styles/index.css';
 import { useAuth } from "../hooks";
 import Register from "../pages/Register";
 import Setting from "../pages/Setting";
+import UserProfile from "../pages/UserProfile";
+
+
+
+// creating Private Route
+function PrivateRoute({children}){
+
+  const auth = useAuth();
+
+  if(auth.user){
+    return children;
+  }
+  return <Navigate to="/login" />
+}
 
 // creating Components
 const About = () => {
@@ -62,7 +76,19 @@ function App() {
             <Route exact path="/about" element={<About />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/sign-up" element={<Register />}></Route>
-            <Route exact path="/user-settings" element={<Setting />}></Route>
+
+            <Route exact path="/user-settings" element={
+              <PrivateRoute>
+                <Setting />
+              </PrivateRoute>}>
+            </Route>
+
+            <Route exact path="/user/:userId" element={
+              <PrivateRoute>
+                <UserProfile />
+              </PrivateRoute>}>
+            </Route>
+
             <Route path="*" element={<Page404 />}></Route>
             
         </Routes>

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import Comment from '../components/Comment';
 import Loader from '../components/Loader';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getPosts } from '../api';
 import styles from '../styles/home.module.css';
 
@@ -39,7 +40,14 @@ const Home = () =>{
                         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="user-profile-pic"></img>
 
                         <div className={styles.postAuthor}>
-                            <span className={styles.postAuthor}>{post.user.name}</span>
+                            <Link to={{
+                                pathname: `/user/${post.user._id}`,
+                            }}
+                            
+                            state = {{ user: post.user,}}
+                                className={styles.postAuthor}>
+                                    {post.user.name}
+                            </Link>
                             <span className={styles.postTime}> a minute ago</span>
                         </div>
                     </div>
