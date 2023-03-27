@@ -10,6 +10,8 @@ export const useAuth = () => {
 }
 
 
+
+
 export const useProviderAuth = () => {
   const [user, setuser] = useState(null);   
   const [loading, setLoading] = useState(true);
@@ -29,6 +31,9 @@ export const useProviderAuth = () => {
 
   }, []);
 
+
+
+// Login function
   const login = async(email, password) => {
     const response = await userLogin(email, password);
     // checking the response and handling each authentication
@@ -71,6 +76,8 @@ export const useProviderAuth = () => {
 
   }
 
+
+  // update user function
   const updateUser = async(userId, name, password, confirmPassword) => {
     const response = await editProfile(userId, name, password, confirmPassword);
     // checking the response and handling each authentication
@@ -94,11 +101,15 @@ export const useProviderAuth = () => {
   }
 
 
+  // logout function
   const logout = () => {
     setuser(null);
     removeItemLocalStorage(LOCALSTORAGE_TOKEN_KEY);
   };
 
+
+
+  // here we are  returning all the function to call in other files.
   return {
     user,
     login, 
