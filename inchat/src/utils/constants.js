@@ -1,4 +1,4 @@
-const API_ROOT = 'https://codeial.codingninjas.com:8000/api/v2/';
+const API_ROOT = 'https://codeial.codingninjas.com:8000/api/v2';
 
 // doc url -  
 export const API_URLS = {

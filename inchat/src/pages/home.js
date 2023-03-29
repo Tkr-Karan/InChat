@@ -44,7 +44,7 @@ const Home = () =>{
                                 pathname: `/user/${post.user._id}`,
                             }}
                             
-                            state = {{ user: post.user,}}
+                            state = {{ user : post.user}}
                                 className={styles.postAuthor}>
                                     {post.user.name}
                             </Link>

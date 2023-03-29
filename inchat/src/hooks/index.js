@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { editProfile, login as userLogin, register } from '../api';
+import { editProfile, login as userLogin, register, fetchUserFriends } from '../api';
 import jwt from 'jwt-decode';
 import { setItemLocalStorage, LOCALSTORAGE_TOKEN_KEY, removeItemLocalStorage, getItemLocalStorage } from '../utils';
 
@@ -13,21 +13,44 @@ export const useAuth = () => {
 
 
 export const useProviderAuth = () => {
-  const [user, setuser] = useState(null);   
+  const [user, setUser] = useState(null);   
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const userToken = getItemLocalStorage(LOCALSTORAGE_TOKEN_KEY);
+    const getUser = async () => {
+      const userToken = getItemLocalStorage(LOCALSTORAGE_TOKEN_KEY);
 
-    console.log(userToken);
+      console.log(userToken);
+  
+      if(userToken){
+        const user = jwt(userToken);
+        const response = await fetchUserFriends();
 
-    if(userToken){
-      const user = jwt(userToken);
-      console.log(user);
-      setuser(user);
+        console.log("response -->", response); 
+
+
+        let friends = [];
+        if(response.success){
+          friends = response.data.friends;
+          // console.log(friends);
+        }
+
+        setUser({
+          ...user, 
+          friends,
+        })
+
+  
+        // console.log(user);
+        // setUser(user);
+      }
     }
 
+    
+
     setLoading(false);
+
+    getUser();
 
   }, []);
 
@@ -39,7 +62,7 @@ export const useProviderAuth = () => {
     // checking the response and handling each authentication
     if(response.success){
         // if the response is success we setup the user using particular hook
-        setuser(response.data.user);
+        setUser(response.data.user);
         setItemLocalStorage(
           LOCALSTORAGE_TOKEN_KEY,
           response.data.token ? response.data.token : null
@@ -83,7 +106,7 @@ export const useProviderAuth = () => {
     // checking the response and handling each authentication
     if(response.success){
         // if the response is success we setup the user using particular hook
-        setuser(response.data.user);
+        setUser(response.data.user);
         setItemLocalStorage(
           LOCALSTORAGE_TOKEN_KEY,
           response.data.token ? response.data.token : null
@@ -103,11 +126,20 @@ export const useProviderAuth = () => {
 
   // logout function
   const logout = () => {
-    setuser(null);
+    setUser(null);
     removeItemLocalStorage(LOCALSTORAGE_TOKEN_KEY);
   };
 
-
+  // addFriends functions
+  const updateUserFriends = (addFriend, friend) => {
+    if(addFriend) {
+      setUser({
+        ...user,
+        friends: [...user.friends, friend],
+      });
+      return;
+    }
+  }
 
   // here we are  returning all the function to call in other files.
   return {
@@ -116,7 +148,8 @@ export const useProviderAuth = () => {
     logout, 
     loading,
     signup,
-    updateUser
+    updateUser,
+    updateUserFriends
   }
 
 };

@@ -18,7 +18,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [loggingIn, setLoggingIn] = useState(false);
     const auth = useAuth();
-    // console.log(auth);
+    console.log("auth", auth);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -73,7 +73,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
-            <div className={styles.field} disabled={loggingIn}>
+            <div className={styles.field}>
                 <button disabled={loggingIn}>
                     {loggingIn ? 'logging In.....' : 'Log In'}
                         
