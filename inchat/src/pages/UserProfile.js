@@ -5,7 +5,7 @@ import styles from '../styles/settings.module.css';
 import { useAuth } from '../hooks';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { addFriend, fetchUserProfile } from '../api';
+import { addFriend, fetchUserProfile, removeFriend } from '../api';
 import Loader from '../components/Loader';
 
 const UserProfile = () => {
@@ -15,6 +15,8 @@ const UserProfile = () => {
   const [requestInProgress, setRequestInProgress] = useState(false);
   const {userId} = useParams();
   const auth = useAuth();
+
+
 
     // const location = useLocation();
     // console.log('userId', userId);
@@ -54,7 +56,7 @@ const UserProfile = () => {
   // checking the user friends
   const checkIfUserIsAFriend = () => {
     const friends = auth.user.friends;
-    // console.log("friends", friends);
+    console.log("friends", friends);
 
     const friendIds = friends.map(friend => friend.to_user._id);
 
@@ -69,8 +71,27 @@ const UserProfile = () => {
 
 
   // creating addUser and Remove user function
-  const handleRemoveUserClick = () => {
+  const handleRemoveUserClick = async () => {
+    setRequestInProgress(true);
+    
+    const response = await removeFriend(userId);
+    
+    if(response.success){
+      // const {friendship} = response.data;
+      
+      const friendship = auth.user.friends.filter((friend) => friend.to_user._id === userId );
 
+      auth.updateUserFriends(false, friendship[0]);
+      toast("user removed successfully", {
+        apperance : 'success',
+      });
+    }else{
+      toast(response.message, {
+        apperance: 'error',
+      });
+    }
+    
+    setRequestInProgress(false);
   };
 
   const handleAddUserClick = async () => {

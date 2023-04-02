@@ -139,6 +139,15 @@ export const useProviderAuth = () => {
       });
       return;
     }
+
+    const newFriends = user.friends.filter(
+      (f) => f.to_user._id !== friend.to_user._id
+    );
+
+    setUser({
+      ...user,
+      friends: newFriends,
+    });
   }
 
   // here we are  returning all the function to call in other files.
