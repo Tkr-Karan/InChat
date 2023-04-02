@@ -3,9 +3,9 @@ import { BrowserRouter,  Navigate,  Route, Routes } from "react-router-dom";
 
 
 // import {getPosts} from '../api';
-import Home from '../pages/Home';
+import Home from "../pages/home";
 import Login from "../pages/Login";
-import Loader from "./Loader";
+import Loader from "./loader";
 import Navbar from "./Navbar";
 import { ToastContainer } from "react-toastify";
 import styles from '../styles/index.css';

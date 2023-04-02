@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Comment from '../components/Comment';
-import Loader from '../components/Loader';
+import Loader from '../components/loader';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPosts } from '../api';

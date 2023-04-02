@@ -6,7 +6,7 @@ import { useAuth } from '../hooks';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { addFriend, fetchUserProfile, removeFriend } from '../api';
-import Loader from '../components/Loader';
+import Loader from '../components/loader';
 
 const UserProfile = () => {
 
