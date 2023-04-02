@@ -7,7 +7,7 @@ import { getPosts } from '../api';
 import styles from '../styles/home.module.css';
 
 const Home = () =>{
-
+       
     //also remove the post propas aargs
     // Adding the port hook here
     const [posts, setPosts] = useState([]);
