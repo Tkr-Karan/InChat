@@ -8,9 +8,9 @@ import { login } from "../api";
 import { Navigate } from "react-router";
 // import { toast } from 'react-toastify/dist/components';
 
-const clicked = () => {
-  toast("clicked hain bhai");
-};
+// const clicked = () => {
+//   toast("clicked hain bhai");
+// };
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +34,7 @@ const Login = () => {
     const response = await auth.login(email, password);
 
     if (response.success) {
-      toast("succeessFully logged in", {
+      toast.success("succeessFully logged in", {
         appearance: "success",
       });
     } else {
@@ -71,9 +71,10 @@ const Login = () => {
         />
       </div>
       <div className={styles.field}>
-        <button onClick={clicked} disabled={loggingIn}>
+        <button 
+          disabled={loggingIn}
+        >
           {loggingIn ? "logging In....." : "Log In"}
-
           <ToastContainer />
         </button>
       </div>

@@ -20,13 +20,13 @@ export const useProviderAuth = () => {
     const getUser = async () => {
       const userToken = getItemLocalStorage(LOCALSTORAGE_TOKEN_KEY);
 
-      console.log(userToken);
+      // console.log(userToken);
   
       if(userToken){
         const user = jwt(userToken);
         const response = await fetchUserFriends();
 
-        console.log("response -->", response); 
+        // console.log("response -->", response); 
 
 
         let friends = [];

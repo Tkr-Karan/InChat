@@ -27,7 +27,7 @@ const UserProfile = () => {
       const getUser = async () => {
         const response = await fetchUserProfile(userId);
         if(response.success){
-          console.log('response',response.data.user)
+          // console.log('response',response.data.user)
           setUser(response.data.user);
         }
         else{
@@ -56,7 +56,7 @@ const UserProfile = () => {
   // checking the user friends
   const checkIfUserIsAFriend = () => {
     const friends = auth.user.friends;
-    console.log("friends", friends);
+    // console.log("friends", friends);
 
     const friendIds = friends.map(friend => friend.to_user._id);
 
@@ -103,7 +103,7 @@ const UserProfile = () => {
       const {friendship} = response.data;
 
       auth.updateUserFriends(true, friendship);
-      toast("user added successfully", {
+      toast.success("user added successfully", {
         apperance : 'success',
       });
     }else{
@@ -145,6 +145,7 @@ const UserProfile = () => {
           onClick = {handleRemoveUserClick}
         >
           {requestInProgress ? 'Friend Removed' :'remove Friend ' }
+          <ToastContainer />
         </button>
          : 
         <button 
