@@ -6,33 +6,35 @@ import { Link } from 'react-router-dom';
 import { getPosts } from '../api';
 import styles from '../styles/home.module.css';
 import FriendList from '../components/FriendList';
-import { useAuth } from '../hooks';
+import { useAuth, usePosts } from '../hooks';
 import CreatePost from '../components/CreatePost';
 
 const Home = () =>{
        
     //also remove the post propas aargs
     // Adding the port hook here
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // const [posts, setPosts] = useState([]);
+    // const [loading, setLoading] = useState(true);
     const auth = useAuth();
+    const posts = usePosts();
 
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-        const response = await getPosts();
-        if( response.success){
-            setPosts(response.data.posts);
-        }
-        setLoading(false);
-        // console.log('response', response);
-        };
+        // moving to the Post Providers
+    // useEffect(() => {
+    //     const fetchPosts = async () => {
+    //     const response = await getPosts();
+    //     if( response.success){
+    //         setPosts(response.data.posts);
+    //     }
+    //     setLoading(false);
+    //     // console.log('response', response);
+    //     };
         
-        fetchPosts();
+    //     fetchPosts();
 
-    }, [])   
+    // }, [])   
 
-    if(loading){
+    if(posts.loading){
         return <Loader />;
     }
 
@@ -41,7 +43,7 @@ const Home = () =>{
         <div className={styles.home}>
             <div className={styles.postsList}>
             <CreatePost />
-            {posts.map((post) =>(
+            {posts.data.map((post) =>(
                 <div className={styles.postWrapper} key={`post-${post._id}`} >
                     <div className={styles.postHeader}>
                         <div className={styles.postAvatar}>
@@ -67,12 +69,12 @@ const Home = () =>{
                         <div className={styles.postActions}>
                             <div className={styles.postLike}>
                                 <img src="https://cdn-icons-png.flaticon.com/512/535/535234.png" alt="like-icon"></img>
-                                <span>5</span>
+                                <span>{post.likes.length}</span>
                             </div>
 
                             <div className={styles.postCommentsIcon}>
                                 <img src="https://cdn-icons-png.flaticon.com/512/13/13673.png" alt="comments-icon"></img>
-                                <span>3</span>
+                                <span>{post.comments.length}</span>
                             </div>
                         </div>
 
