@@ -7,6 +7,7 @@ import { getPosts } from '../api';
 import styles from '../styles/home.module.css';
 import FriendList from '../components/FriendList';
 import { useAuth } from '../hooks';
+import CreatePost from '../components/CreatePost';
 
 const Home = () =>{
        
@@ -39,6 +40,7 @@ const Home = () =>{
     return(
         <div className={styles.home}>
             <div className={styles.postsList}>
+            <CreatePost />
             {posts.map((post) =>(
                 <div className={styles.postWrapper} key={`post-${post._id}`} >
                     <div className={styles.postHeader}>
