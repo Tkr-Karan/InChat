@@ -196,10 +196,25 @@ export const useProviderPosts = () => {
     setPosts(newPost);
   }
 
+  const addComment = (comment, postId) => {
+    const newPost = posts.map((post) => {
+      if(post._id === postId){
+        return {
+          ...post, 
+          comments: [...post.comments, comment]
+        };
+      }
+      return post;
+    });
+
+    setPosts(newPost);
+  }
+
   return{
     data: posts,
     loading,
-    addPostsToState
+    addPostsToState,
+    addComment
   };
 
 }
