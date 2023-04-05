@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { createComment } from '../api';
+import { createComment, toggleLike } from '../api';
 import { usePosts } from '../hooks';
 import styles from '../styles/home.module.css';
 import Comment from './Comment';
@@ -35,6 +35,29 @@ const Post = ({post}) => {
         }
       };
 
+    //   craeating the post like button function
+      const handlePostLikeClick = async () => {
+        const response = await toggleLike(post._id, 'Post');
+
+        if (response.success) {
+            
+            if(response.data.deleted){
+                toast.success('Like removed successfully!', {
+                  appearance: 'success',
+                });
+            }else{
+                toast.success("Like Added Successfully", {
+                    appearance: "success",
+                })
+            }
+        } else {
+            toast(response.message, {
+              appearance: 'error',
+            });
+          }
+    
+      }
+
     return(
         <div className={styles.postWrapper} key={`post-${post._id}`} >
             <div className={styles.postHeader}>
@@ -60,7 +83,9 @@ const Post = ({post}) => {
 
                 <div className={styles.postActions}>
                     <div className={styles.postLike}>
-                        <img src="https://cdn-icons-png.flaticon.com/512/535/535234.png" alt="like-icon"></img>
+                        <button onClick={handlePostLikeClick}>
+                            <img src="https://cdn-icons-png.flaticon.com/512/535/535234.png" alt="like-icon"></img>
+                        </button>
                         <span>{post.likes.length}</span>
                     </div>
 

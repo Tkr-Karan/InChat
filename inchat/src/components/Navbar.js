@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks';
 import styles from '../styles/navbar.module.css';
+import { useState } from 'react';
 
 
 const Navbar = () => {
+
+  const [result, setResult] = useState([]);
+  const [searchText, setSearchText] = useState('');
   // adding auth so we can display the user if it successfully authenticatte
   const auth = useAuth();
   return (
@@ -15,6 +19,10 @@ const Navbar = () => {
             src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
           />
         </a>
+      </div>
+
+      <div>
+
       </div>
  
       <div className={styles.rightNav}>
