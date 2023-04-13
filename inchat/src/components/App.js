@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import Loader from "./loader";
 import Navbar from "./Navbar";
 // import { ToastContainer } from "react-toastify";
-// import styles from '../styles/index.css';
+import styles from '../styles/index.css';
 import { useAuth } from "../hooks";
 import Register from "../pages/Register";
 import Setting from "../pages/Setting";
