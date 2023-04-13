@@ -36,7 +36,7 @@ const customFetch = async (url, { body, ...customConfig }) => {
 
     throw new Error(data.message);
   } catch (error) {
-    console.error('error');
+    console.error(this.props.url, error.toString());
     return {
       message: error.message,
       success: false,

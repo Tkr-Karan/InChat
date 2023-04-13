@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { BrowserRouter,  Navigate,  Route, Routes } from "react-router-dom";
 
 
@@ -7,8 +7,8 @@ import Home from "../pages/home";
 import Login from "../pages/Login";
 import Loader from "./loader";
 import Navbar from "./Navbar";
-import { ToastContainer } from "react-toastify";
-import styles from '../styles/index.css';
+// import { ToastContainer } from "react-toastify";
+// import styles from '../styles/index.css';
 import { useAuth } from "../hooks";
 import Register from "../pages/Register";
 import Setting from "../pages/Setting";
@@ -32,9 +32,9 @@ const About = () => {
   return <h1> About </h1>;
 }
 
-const UserInfo = () => {
-  return <h1> User </h1>;
-}
+// const UserInfo = () => {
+//   return <h1> User </h1>;
+// }
 
 const Page404 = () => {
   return <h1> 404!!, Page Not Found</h1>
@@ -43,7 +43,7 @@ const Page404 = () => {
 function App() {
   const auth = useAuth();
 
-  //this hook set in the Home.js
+  // this hook set in the Home.js
   // const [posts, setPosts] = useState([]);
   // const [loading, setLoading] = useState(true);
   // useEffect(() => {

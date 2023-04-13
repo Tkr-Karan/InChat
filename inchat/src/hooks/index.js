@@ -13,7 +13,7 @@ export const useAuth = () => {
 
 
 
-export const useProviderAuth = () => {
+export const  useProviderAuth = () => {
   const [user, setUser] = useState(null);   
   const [loading, setLoading] = useState(true);
 

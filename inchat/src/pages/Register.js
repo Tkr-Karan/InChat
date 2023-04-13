@@ -14,6 +14,8 @@ const Register = () => {
     const [signup, setSignUp] = useState('');
     const auth = useAuth();
     const history = useNavigate();
+
+    console.log("sdsd",history);
     
     const handleFormSubmit = async (e) => {
         e.preventDefault();
