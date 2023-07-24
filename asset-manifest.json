@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/InChat/static/css/main.0e34db15.css",
+    "main.js": "/InChat/static/js/main.aec1d444.js",
+    "index.html": "/InChat/index.html",
+    "main.0e34db15.css.map": "/InChat/static/css/main.0e34db15.css.map",
+    "main.aec1d444.js.map": "/InChat/static/js/main.aec1d444.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0e34db15.css",
+    "static/js/main.aec1d444.js"
+  ]
+}
