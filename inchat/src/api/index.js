@@ -2,7 +2,7 @@ import { API_URLS, getFormBody, LOCALSTORAGE_TOKEN_KEY } from '../utils';
 
 const customFetch = async (url, { body, ...customConfig }) => {
   const token = window.localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
-
+  console.log("token-->", token);
   const headers = {
     'content-type': 'application/x-www-form-urlencoded',
   };

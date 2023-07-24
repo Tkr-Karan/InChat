@@ -48,7 +48,7 @@ function App() {
   // const [loading, setLoading] = useState(true);
   // useEffect(() => {
   //   const fetchPosts = async () => {
-  //     const response = await getPosts();
+      // const response = await getPosts();
   //     if( response.success){
   //       setPosts(response.data.posts);
   //     }

@@ -8,6 +8,7 @@ import Comment from './Comment';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const Post = ({post}) => {
     const [comment, setComment] = useState('');
     const [creatingComment, setCreatingComment] = useState(false);

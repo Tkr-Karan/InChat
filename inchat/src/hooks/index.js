@@ -21,7 +21,7 @@ export const  useProviderAuth = () => {
     const getUser = async () => {
       const userToken = getItemLocalStorage(LOCALSTORAGE_TOKEN_KEY);
 
-      // console.log(userToken);
+      console.log("userToken====>>>", userToken);
   
       if(userToken){
         const user = jwt(userToken);
